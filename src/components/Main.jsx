@@ -83,12 +83,15 @@ export default function subjectsList() {
 
 
 
-    function  fetchBookPosts(){
-        axios.get("http://localhost:3000/books")
+    function  fetchPosts(){
+        axios.get("http://localhost:3000/route")
         .then((res) =>
             setBookPosts(res.data)
             //console.log(res.data)
         )
+        .catch(function (error){
+            console.log(error);
+        })
     }
 
     // Funzione del contenuto del form
@@ -99,6 +102,8 @@ export default function subjectsList() {
             [e.target.name]: e.target.value
         }))
     }
+
+        useEffect(fetchPosts, [])
 
     // Funzione dell'invio, submit
     function handleSunbmit(e) {
